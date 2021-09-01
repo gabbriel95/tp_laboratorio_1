@@ -10,6 +10,7 @@ void mostrarTexto(char mensaje[]);
 
 int ValidarEntero(int numero, int rangoMinimo, int rangoMaximo);
 int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo);
+void MostrarDivision(float a, float b);
 
 void MostrarEntero(char mensaje[], int valorIngresado);
 void MostrarDecimal(char mensaje[], float valorIngresado);
@@ -30,7 +31,7 @@ int Resta(int numeroUno, int numeroDos);
 /// @param numeroUno
 /// @param numeroDos
 /// @return devuelve el resultado de la division
-int Division(int numeroUno, int numeroDos);
+float Division(int numeroUno, int numeroDos);
 
 /// @brief multiplica sus dos parametros y devuelve el resultado de la multiplicacion
 /// @param numeroUno

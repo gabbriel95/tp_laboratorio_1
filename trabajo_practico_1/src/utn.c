@@ -70,9 +70,9 @@ int Multiplicacion(int numeroUno, int numeroDos){
 	return resultado;
 }
 
-int Division(int numeroUno, int numeroDos){
-	int resultado;
-	resultado = numeroUno / numeroDos;
+float Division(int numeroUno, int numeroDos){
+	float resultado;
+	resultado = (float)numeroUno / numeroDos;
 
 	return resultado;
 }
@@ -91,8 +91,19 @@ int Factorial (int numero){
 	return resultado;
 }
 
-void mostrarTexto(char mensaje[]){
+void MostrarTexto(char mensaje[]){
 
 	printf("%s", mensaje);
 }
 
+void MostrarDivision(float a, float b){
+
+	if(b == 0)
+    {
+        printf("\nNo es posible dividir por cero. \n");
+
+    }else {
+    	printf("\nEl resultado de la división es: %.2f \n", Division(a, b));
+	}
+
+}

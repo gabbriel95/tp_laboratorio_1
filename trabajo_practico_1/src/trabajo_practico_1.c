@@ -57,7 +57,7 @@ int main(void) {
 					break;
 				case 3:
 					resultado = Division(a, b);
-					MostrarEntero("\nEl resultado de la division es: ", resultado);
+					MostrarDivision(a, b);
 					break;
 				case 4:
 					resultado =Multiplicacion(a, b);
