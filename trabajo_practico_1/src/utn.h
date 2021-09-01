@@ -5,10 +5,14 @@
 /// @param mensaje
 /// @return devuelve el numero pedido
 int PedirEntero(char mensaje[]);
+float PedirDecimal(char mensaje[]);
+void mostrarTexto(char mensaje[]);
 
 int ValidarEntero(int numero, int rangoMinimo, int rangoMaximo);
+int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo);
 
 void MostrarEntero(char mensaje[], int valorIngresado);
+void MostrarDecimal(char mensaje[], float valorIngresado);
 
 /// @brief Suma sus los dos parametros y devuelve el resultado de la suma
 /// @param numeroUno
