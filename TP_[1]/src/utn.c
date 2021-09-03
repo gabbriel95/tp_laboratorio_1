@@ -40,13 +40,9 @@ int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo){
 	return numero;
 }
 
-void MostrarEntero(char mensaje[], int valorIngresado,int numeroUno, int numeroDos){
+void MostrarResultado(char mensaje[], int valorIngresado,int numeroUno, int numeroDos){
 
 	printf("%s %i y %i es: %d\n", mensaje,numeroUno,numeroDos, valorIngresado);
-}
-
-void MostrarDecimal(char mensaje[], float valorIngresado){
-	printf("%s%f", mensaje, valorIngresado);
 }
 
 int Suma (int numeroUno, int numeroDos){
@@ -97,14 +93,15 @@ void MostrarTexto(char mensaje[]){
 	printf("%s", mensaje);
 }
 
-void MostrarDivision(float a, float b){
+void MostrarDivision(int a, int b){
+
 
 	if(b == 0)
     {
         printf("\nNo es posible dividir por cero. \n");
 
     }else {
-    	printf("\nEl resultado de la división entre %.2f y %.2f es: %.2f \n",a, b, Division(a, b));
+    	printf("\nEl resultado de la división entre %d y %d es: %.2f \n",a, b, Division(a, b));
 	}
 
 }

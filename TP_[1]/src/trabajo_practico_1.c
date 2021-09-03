@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 
 #include "utn.h"
@@ -24,6 +24,8 @@ int main(void) {
 		printf("\n4.Salir\n");
 		printf("\nIngrese una opcion:");
 		scanf("%d", &opcion);
+		__fpurge(stdin);
+
 
 		switch(opcion)
 		{
@@ -49,11 +51,11 @@ int main(void) {
 				{
 				case 1:
 					resultado = Suma(a, b);
-					MostrarEntero("\nEl resultado de la suma entre", resultado,a,b);
+					MostrarResultado("\nEl resultado de la suma entre", resultado,a,b);
 					break;
 				case 2:
 					resultado = Resta(a, b);
-					MostrarEntero("\nEl resultado de la resta entre", resultado,a,b);
+					MostrarResultado("\nEl resultado de la resta entre", resultado,a,b);
 					break;
 				case 3:
 					resultado = Division(a, b);
@@ -61,10 +63,10 @@ int main(void) {
 					break;
 				case 4:
 					resultado = Multiplicacion(a, b);
-					MostrarEntero("\nEl resultado de la multiplicacion entre", resultado,a,b);
+					MostrarResultado("\nEl resultado de la multiplicacion entre", resultado,a,b);
 					break;
 				case 5:
-					a =ValidarEntero(a, 0, 10);
+					a =ValidarEntero(a, 0, 20);
 					b =ValidarEntero(b,0,10);
 					MostrarFactorial(a, b);
 					break;
