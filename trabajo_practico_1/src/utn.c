@@ -39,9 +39,9 @@ int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo){
 	return numero;
 }
 
-void MostrarEntero(char mensaje[], int valorIngresado){
+void MostrarEntero(char mensaje[], int valorIngresado,int numeroUno, int numeroDos){
 
-	printf("%s%d", mensaje, valorIngresado);
+	printf("%s %i y %i es: %d\n", mensaje,numeroUno,numeroDos, valorIngresado);
 }
 
 void MostrarDecimal(char mensaje[], float valorIngresado){
@@ -80,13 +80,13 @@ float Division(int numeroUno, int numeroDos){
 int Factorial (int numero){
 
 	int resultado;
-
-	resultado = 1;
-
-	for(int i = 1; i <= numero; i++){
-		resultado = resultado * numero;
+	if(numero == 0){
+		resultado = 1;
 	}
-
+	else
+	{
+	resultado = numero*Factorial(numero-1);
+	}
 
 	return resultado;
 }
@@ -103,7 +103,14 @@ void MostrarDivision(float a, float b){
         printf("\nNo es posible dividir por cero. \n");
 
     }else {
-    	printf("\nEl resultado de la división es: %.2f \n", Division(a, b));
+    	printf("\nEl resultado de la división entre %.2f y %.2f es: %.2f \n",a, b, Division(a, b));
 	}
 
 }
+
+
+void MostrarFactorial(int a, int b)
+{
+    printf("\nEl Factorial de A es: %i   \nEl Factorial de B es: %i \n", Factorial(a), Factorial(b));
+}
+

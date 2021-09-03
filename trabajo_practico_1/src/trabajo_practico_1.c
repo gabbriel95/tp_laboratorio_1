@@ -9,12 +9,12 @@ int main(void) {
 	int a;
 	int b;
 	int resultado;
-	int resultadoB;
 
 	printf("Bienvenido a Basic Calculator\n\n");
 
 
 	int opcion;
+	int opcion2;
 
 	do
 	{
@@ -28,7 +28,7 @@ int main(void) {
 		switch(opcion)
 		{
 			case 1:
-				a = PedirEntero("Ingrese el valor para A: ");
+				a = PedirEntero("\nIngrese el valor para A: ");
 
 				break;
 			case 2:
@@ -43,30 +43,30 @@ int main(void) {
 				printf("5.Factorial\n");
 				printf("6.Atras\n");
 				printf("Ingrese una opcion: ");
-				scanf("%d", &opcion);
+				scanf("%d", &opcion2);
 
-				switch(opcion)
+				switch(opcion2)
 				{
 				case 1:
 					resultado = Suma(a, b);
-					MostrarEntero("\nEl resultado de la suma es: ", resultado);
+					MostrarEntero("\nEl resultado de la suma entre", resultado,a,b);
 					break;
 				case 2:
 					resultado = Resta(a, b);
-					MostrarEntero("\nEl resultado de la resta es: ", resultado);
+					MostrarEntero("\nEl resultado de la resta entre", resultado,a,b);
 					break;
 				case 3:
 					resultado = Division(a, b);
 					MostrarDivision(a, b);
 					break;
 				case 4:
-					resultado =Multiplicacion(a, b);
-					MostrarEntero("\nEl resultado de la multiplicacion es: ", resultado);
+					resultado = Multiplicacion(a, b);
+					MostrarEntero("\nEl resultado de la multiplicacion entre", resultado,a,b);
 					break;
 				case 5:
-					resultado = Factorial(a);
-					resultadoB = Factorial(b);
-					MostrarEntero("\nEl resultado de es: \n", resultado);
+					a =ValidarEntero(a, 0, 10);
+					b =ValidarEntero(b,0,10);
+					MostrarFactorial(a, b);
 					break;
 				case 6:
 					break;

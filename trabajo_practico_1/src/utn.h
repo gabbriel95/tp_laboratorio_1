@@ -11,8 +11,10 @@ void mostrarTexto(char mensaje[]);
 int ValidarEntero(int numero, int rangoMinimo, int rangoMaximo);
 int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo);
 void MostrarDivision(float a, float b);
+void MostrarFactorial(int a, int b);
 
-void MostrarEntero(char mensaje[], int valorIngresado);
+void MostrarEntero(char mensaje[], int valorIngresado,int numeroUno, int numeroDos);
+
 void MostrarDecimal(char mensaje[], float valorIngresado);
 
 /// @brief Suma sus los dos parametros y devuelve el resultado de la suma
