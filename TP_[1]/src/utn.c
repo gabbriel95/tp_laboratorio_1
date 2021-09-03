@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utn.h"
 
 int PedirEntero(char mensaje[]){
 	int numero;
@@ -22,7 +23,7 @@ float PedirDecimal(char mensaje[]){
 int ValidarEntero(int numero, int rangoMinimo, int rangoMaximo){
 
 	while(numero < rangoMinimo || numero > rangoMaximo){
-		printf("Fuera de rango, intente nuevamente[%d/%d]\n", rangoMinimo,rangoMaximo);
+		printf("%d esta fuera de rango calculable, intente nuevamente entre[%d/%d]\n",numero, rangoMinimo,rangoMaximo);
 		scanf("%d", &numero);
 	}
 
@@ -111,6 +112,7 @@ void MostrarDivision(float a, float b){
 
 void MostrarFactorial(int a, int b)
 {
-    printf("\nEl Factorial de A es: %i   \nEl Factorial de B es: %i \n", Factorial(a), Factorial(b));
+
+    printf("\nEl Factorial de %d es: %d   \nEl Factorial de %d es: %d \n",a,Factorial(a),b, Factorial(b));
 }
 
