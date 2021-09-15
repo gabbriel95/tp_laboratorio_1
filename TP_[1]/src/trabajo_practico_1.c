@@ -79,7 +79,7 @@ int main(void) {
 					MostrarResultado("\nEl resultado de la resta entre", resultadoResta,a,b);
 
 					//MostrarDivision(a, b);
-					MostrarResultadoFlotante("\n El resultado de la division entr", resultadoDivision, a, b);
+					MostrarResultadoFlotante("\n El resultado de la division entre", resultadoDivision, a, b);
 
 					MostrarResultado("\nEl resultado de la multiplicacion entre", resultadoMultiplicacion,a,b);
 
