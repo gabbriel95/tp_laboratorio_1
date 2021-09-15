@@ -4,12 +4,12 @@
 /// @brief Pide un numero entero
 /// @param mensaje - Mensaje que solicita el numero
 /// @return devuelve el numero ingresado
-int PedirEntero(char mensaje[]);
+long int PedirEntero(char mensaje[]);
 
 /// @brief Pide un numero decimal
 /// @param mensaje - Mensaje que solicita el numero
 /// @return devuelve el numero ingresado
-float PedirDecimal(char mensaje[]);
+double PedirDecimal(char mensaje[]);
 
 /// @brief Muestra un mensaje
 /// @param mensaje - Mensaje a ser mostrado
@@ -20,24 +20,24 @@ void mostrarTexto(char mensaje[]);
 /// @param rangoMinimo El rango minimo
 /// @param rangoMaximo El rango maximo
 /// @return
-int ValidarEntero(int numero, int rangoMinimo, int rangoMaximo);
+long int ValidarEntero(long int numero, long int rangoMinimo, long int rangoMaximo);
 
 /// @brief Valida un numero decimal entre dos rangos
 /// @param numero numero a validar
 /// @param rangoMinimo rango minimo
 /// @param rangoMaximo rango maximo
 /// @return
-int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo);
+long int ValidarDecimal(double numero, double rangoMinimo, double rangoMaximo);
 
 /// @brief Muentra el resultado de una division, valida que el segundo numero no sea un cero
 /// @param a  Dividendo
 /// @param b Divisor
-void MostrarDivision(int a, int b);
+void MostrarDivision(long int a, long int b);
 
 /// @brief Muentra el resultado del factorial de dos numeros
 /// @param a Primer Numero
 /// @param b Segundo Numero
-void MostrarFactorial(int a, int b);
+void MostrarFactorial(long int a, long int b);
 
 
 /// @brief Muestra el resultado de una operacion entre dos numeros
@@ -45,36 +45,40 @@ void MostrarFactorial(int a, int b);
 /// @param valorIngresado - Resultado de la operacion
 /// @param numeroUno - Primer numero de la operacion
 /// @param numeroDos - Segundo numero de la operacion
-void MostrarResultado(char mensaje[], int valorIngresado,int numeroUno, int numeroDos);
+void MostrarResultado(char mensaje[], long int valorIngresado,long int numeroUno, long int numeroDos);
 
 
 /// @brief Suma sus los dos parametros y devuelve el resultado de la suma
 /// @param numeroUno
 /// @param numeroDos
 /// @return devuelve el resultado de la suma
-int Suma(int numeroUno, int numeroDos);
+long int Suma(long int numeroUno, long int numeroDos);
 
 /// @brief Resta sus dos parametros y devuelve el resultado de la resta
 /// @param numeroUno
 /// @param numeroDos
 /// @return devuelve el resultado de la resta
-int Resta(int numeroUno, int numeroDos);
+long int Resta(long int numeroUno, long int numeroDos);
 
 /// @brief	Divide sus dos parametros y devuelve el resultado de la division
 /// @param numeroUno
 /// @param numeroDos
 /// @return devuelve el resultado de la division
-float Division(int numeroUno, int numeroDos);
+double Division(long int numeroUno, long int numeroDos);
 
 /// @brief multiplica sus dos parametros y devuelve el resultado de la multiplicacion
 /// @param numeroUno
 /// @param numeroDos
 /// @return devuelve el resultado de la multiplicacion
-int Multiplicacion(int numeroUno, int numeroDos);
+long int Multiplicacion(long int numeroUno, long int numeroDos);
 
 /// @brief busca el factorial de un numero y devuelve el resultado de las multiplicaciones
 /// @param numeroUno
 /// @return devuelve el resultado del factorial
-int Factorial(int numeroUno);
+long int Factorial(long int numeroUno);
+
+long int ValidarFactorial(long int numero, long int rangoMinimo, long int rangoMaximo);
+void MostrarResultadoFlotante(char mensaje[], float valorIngresado,long int numeroUno, long int numeroDos);
+
 
 #endif /* UTN_H_ */

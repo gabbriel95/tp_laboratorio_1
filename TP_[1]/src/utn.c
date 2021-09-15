@@ -1,99 +1,89 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <ctype.h>
 #include "utn.h"
 
-int PedirEntero(char mensaje[]){
-	int numero;
+long int PedirEntero(char mensaje[]){
+	long int numero;
 
 	printf("%s", mensaje);
-	scanf("%d", &numero);
+	scanf("%ld", &numero);
+	numero = ValidarEntero(numero,INT_MIN, INT_MAX);
 
 	return numero;
 }
 
-float PedirDecimal(char mensaje[]){
-	float numero;
+double PedirDecimal(char mensaje[]){
+	double numero;
 
 	printf("%s", mensaje);
-	scanf("%f", &numero);
+	scanf("%lf", &numero);
 
 	return numero;
 }
 
-int ValidarEntero(int numero, int rangoMinimo, int rangoMaximo){
+long int ValidarEntero(long int numero, long int rangoMinimo, long int rangoMaximo){
 
 	while(numero < rangoMinimo || numero > rangoMaximo){
-		printf("%d esta fuera de rango calculable, intente nuevamente entre[%d/%d]\n",numero, rangoMinimo,rangoMaximo);
-		scanf("%d", &numero);
+		printf("%ld esta fuera de rango calculable, intente nuevamente entre[%ld/%ld]\n",numero, rangoMinimo,rangoMaximo);
+		scanf("%ld", &numero);
 	}
 
 	return numero;
 }
 
-int ValidarDecimal(float numero, float rangoMinimo, float rangoMaximo){
+long int ValidarDecimal(double numero, double rangoMinimo, double rangoMaximo){
 
 	while(numero < rangoMinimo || numero > rangoMaximo){
-		printf("Fuera de rango, intente nuevamente[%f/%f]\n", rangoMinimo,rangoMaximo);
-		scanf("%f", &numero);
+		printf("Fuera de rango, intente nuevamente[%lf/%lf]\n", rangoMinimo,rangoMaximo);
+		scanf("%lf", &numero);
 	}
 
 	return numero;
 }
 
-void MostrarResultado(char mensaje[], int valorIngresado,int numeroUno, int numeroDos){
+void MostrarResultado(char mensaje[], long int valorIngresado,long int numeroUno, long int numeroDos){
 
-	printf("%s %i y %i es: %d\n", mensaje,numeroUno,numeroDos, valorIngresado);
+	printf("%s %ld y %ld es: %ld\n", mensaje,numeroUno,numeroDos, valorIngresado);
 }
 
-int Suma (int numeroUno, int numeroDos){
+long int Suma (long int numeroUno, long int numeroDos){
 
-	int resultado;
+	long int resultado;
 	resultado = numeroUno + numeroDos;
 
 	return resultado;
 }
 
-int Resta(int numeroUno, int numeroDos){
-	int resultado;
+long int Resta(long int numeroUno, long int numeroDos){
+	long int resultado;
 	resultado = numeroUno - numeroDos;
 
 	return resultado;
 }
 
-int Multiplicacion(int numeroUno, int numeroDos){
-	int resultado;
+long int Multiplicacion(long int numeroUno, long int numeroDos){
+	long int resultado;
 	resultado = numeroUno * numeroDos;
 
 	return resultado;
 }
 
-float Division(int numeroUno, int numeroDos){
-	float resultado;
+double Division(long int numeroUno, long int numeroDos){
+	double resultado;
 	resultado = (float)numeroUno / numeroDos;
 
 	return resultado;
 }
 
-int Factorial (int numero){
-
-	int resultado;
-	if(numero == 0){
-		resultado = 1;
-	}
-	else
-	{
-	resultado = numero*Factorial(numero-1);
-	}
-
-	return resultado;
-}
 
 void MostrarTexto(char mensaje[]){
 
 	printf("%s", mensaje);
 }
 
-void MostrarDivision(int a, int b){
+void MostrarDivision(long int a, long int b){
 
 
 	if(b == 0)
@@ -101,15 +91,57 @@ void MostrarDivision(int a, int b){
         printf("\nNo es posible dividir por cero. \n");
 
     }else {
-    	printf("\nEl resultado de la división entre %d y %d es: %.2f \n",a, b, Division(a, b));
+    	printf("\nEl resultado de la división entre %ld y %ld es: %.2lf \n",a, b, Division(a, b));
 	}
 
 }
 
+long int Factorial (long int numero){
 
-void MostrarFactorial(int a, int b)
-{
+	long int resultado2=0;
+	if(numero == 0){
+		resultado2 = 1;
+	}
+	else
+	{
+	resultado2 = numero*Factorial(numero-1);
+	}
 
-    printf("\nEl Factorial de %d es: %d   \nEl Factorial de %d es: %d \n",a,Factorial(a),b, Factorial(b));
+	return resultado2;
 }
 
+void MostrarFactorial(long int a, long int b)
+{
+
+    printf("\nEl Factorial de %ld es: %ld   \nEl Factorial de %ld es: %ld \n",a,Factorial(a),b, Factorial(b));
+}
+
+long int ValidarFactorial(long int numero, long int rangoMinimo, long int rangoMaximo){
+
+	char respuesta;
+	while(numero < rangoMinimo || numero > rangoMaximo){
+		printf("%ld esta fuera de rango calculable para un factorial, [%ld/%ld]\n",numero, rangoMinimo,rangoMaximo);
+		printf("¿Desea continuar de todas formas? [S/N]\n");
+		scanf("%s", &respuesta);
+		respuesta = tolower(respuesta);
+		if(respuesta == 'n')
+		{
+			printf("Por favor, ingrese un numero nuevo que este dentro del rango par calcular el factorial [%ld/%ld:]\n", rangoMinimo,rangoMaximo);
+			scanf("%ld", &numero);
+		}
+		else
+		{
+			printf("El factorial de %ld, no sera calculado\n", numero);
+			break;
+		}
+	}
+
+void MostrarResultadoFlotante(char mensaje[], float valorIngresado,long int numeroUno, long int numeroDos){
+
+	printf("%s %ld y %ld es: %.2f\n", mensaje,numeroUno,numeroDos, valorIngresado);
+}
+
+
+
+	return numero;
+}
