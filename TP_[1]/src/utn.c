@@ -83,18 +83,6 @@ void MostrarTexto(char mensaje[]){
 	printf("%s", mensaje);
 }
 
-void MostrarDivision(long int a, long int b){
-
-
-	if(b == 0)
-    {
-        printf("\nNo es posible dividir por cero. \n");
-
-    }else {
-    	printf("\nEl resultado de la división entre %ld y %ld es: %.2lf \n",a, b, Division(a, b));
-	}
-
-}
 
 long int Factorial (long int numero){
 
@@ -110,17 +98,18 @@ long int Factorial (long int numero){
 	return resultado2;
 }
 
-void MostrarFactorial(long int a, long int b)
+void MostrarFactorial(long int a)
 {
 
-    printf("\nEl Factorial de %ld es: %ld   \nEl Factorial de %ld es: %ld \n",a,Factorial(a),b, Factorial(b));
+    printf("\nEl Factorial de %ld es: %ld\n",a,Factorial(a));
 }
 
 long int ValidarFactorial(long int numero, long int rangoMinimo, long int rangoMaximo){
 
 	char respuesta;
+	int retorno = 1;
 	while(numero < rangoMinimo || numero > rangoMaximo){
-		printf("%ld esta fuera de rango calculable para un factorial, [%ld/%ld]\n",numero, rangoMinimo,rangoMaximo);
+		printf("\n%ld esta fuera de rango calculable para un factorial, [%ld/%ld]\n",numero, rangoMinimo,rangoMaximo);
 		printf("¿Desea continuar de todas formas? [S/N]\n");
 		scanf("%s", &respuesta);
 		respuesta = tolower(respuesta);
@@ -132,16 +121,29 @@ long int ValidarFactorial(long int numero, long int rangoMinimo, long int rangoM
 		else
 		{
 			printf("El factorial de %ld, no sera calculado\n", numero);
+			retorno = 0;
 			break;
 		}
 	}
+		return retorno;
+}
 
-void MostrarResultadoFlotante(char mensaje[], float valorIngresado,long int numeroUno, long int numeroDos){
+void MostrarResultadoFlotante(float valorIngresado,long int numeroUno, long int numeroDos)
+{
 
-	printf("%s %ld y %ld es: %.2f\n", mensaje,numeroUno,numeroDos, valorIngresado);
+	if(numeroDos == 0)
+    {
+        printf("\nNo es posible dividir por cero. \n");
+
+    }else {
+    	printf("\nEl resultado de la división entre %ld y %ld es: %.2lf \n",numeroUno, numeroDos, valorIngresado);
+    }
 }
 
 
 
-	return numero;
-}
+
+
+
+
+

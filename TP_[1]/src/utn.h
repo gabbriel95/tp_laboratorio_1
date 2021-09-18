@@ -36,8 +36,7 @@ void MostrarDivision(long int a, long int b);
 
 /// @brief Muentra el resultado del factorial de dos numeros
 /// @param a Primer Numero
-/// @param b Segundo Numero
-void MostrarFactorial(long int a, long int b);
+void MostrarFactorial(long int a);
 
 
 /// @brief Muestra el resultado de una operacion entre dos numeros
@@ -77,8 +76,20 @@ long int Multiplicacion(long int numeroUno, long int numeroDos);
 /// @return devuelve el resultado del factorial
 long int Factorial(long int numeroUno);
 
+/// @brief Valida que el numero ingresado este dentro de los rangos calculabres para un factorial
+/// 		Y si el usuario lo desea puede volver a reingresar un numero dentro del rango
+/// @param numero		Numero a validar
+/// @param rangoMinimo 	rango minimo para validar
+/// @param rangoMaximo	rango maximo para validar
+/// @return
 long int ValidarFactorial(long int numero, long int rangoMinimo, long int rangoMaximo);
-void MostrarResultadoFlotante(char mensaje[], float valorIngresado,long int numeroUno, long int numeroDos);
+
+/// @brief	Muentras el resultado de la division entre dos numeros, tambien informa si no
+/// 								se puede dividir por cero
+/// @param valorIngresado	es el resultado de la division
+/// @param numeroUno		es el dividendo
+/// @param numeroDos		es el divisor
+void MostrarResultadoFlotante(float valorIngresado,long int numeroUno, long int numeroDos);
 
 
 #endif /* UTN_H_ */

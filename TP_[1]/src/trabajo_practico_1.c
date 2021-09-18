@@ -17,6 +17,8 @@ int main(void) {
 	int flagIngresoNumeroUno = 0;
 	int flagIngresoNumeroDos = 0;
 	int flagCalculoResultados = 0;
+	int flagFactorialA = 0;
+	int flagFactorialB = 0;
 
 	printf("Bienvenido a Basic Calculator\n\n");
 
@@ -56,12 +58,11 @@ int main(void) {
 				resultadoResta = Resta(a, b);
 				resultadoDivision = Division(a, b);
 				resultadoMultiplicacion = Multiplicacion(a, b);
-				a =ValidarFactorial(a, 0,22);
-				b =ValidarFactorial(b,0, 22);
-				printf("Los operaciones han sido calculadas correctamente\n");
-				printf("6.Atras\n");
-				printf("Ingrese una opcion: ");
-				scanf("%d", &opcion);
+				flagFactorialA=ValidarFactorial(a, 0,22);
+				flagFactorialB=ValidarFactorial(b,0, 22);
+
+				printf("\nLos operaciones han sido calculadas correctamente\n");
+
 				}
 				else
 				{
@@ -78,12 +79,19 @@ int main(void) {
 
 					MostrarResultado("\nEl resultado de la resta entre", resultadoResta,a,b);
 
-					//MostrarDivision(a, b);
-					MostrarResultadoFlotante("\n El resultado de la division entre", resultadoDivision, a, b);
+					MostrarResultadoFlotante(resultadoDivision, a, b);
 
 					MostrarResultado("\nEl resultado de la multiplicacion entre", resultadoMultiplicacion,a,b);
 
-					MostrarFactorial(a, b);
+					if(flagFactorialA == 1)
+					{
+						MostrarFactorial(a);
+					}
+					if(flagFactorialB == 1)
+					{
+						MostrarFactorial(b);
+					}
+
 
 				}
 				else
@@ -95,6 +103,7 @@ int main(void) {
 			case 5:
 				printf("Gracias por usar Basic Calculator");
 				break;
+			default: printf("Error, opcion invalida\n");
 		}
 
 	}while(opcion != 5);
