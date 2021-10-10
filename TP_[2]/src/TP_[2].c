@@ -6,7 +6,7 @@
 #include "Utn.h"
 
 #define CANTIDAD_EMPLEADOS 3
-#define CANTIDAD_CARACTERES 51
+#define CANTIDAD_CARACTERES 21
 
 int main(void) {
 

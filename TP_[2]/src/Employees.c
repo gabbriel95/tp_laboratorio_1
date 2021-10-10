@@ -168,12 +168,24 @@ int printfEmployees(Employee* list, int lenght)
 {
 	int retorno = 0;
 	int i;
+	int flag = 0;
+
+	char id[3] = {"ID"};
+	char nombre[7] = {"NOMBRE"};
+	char apellido[9] = {"APELLIDO"};
+	char salario[8] = {"SALARIO"};
+	char sector[7] = {"SECTOR"};
 
 	for(i=0; i<lenght; i++)
 	{
 		if(list[i].isEmpty == 0)
 		{
-			printf("\n %4d %10s %10s %5.2f %10d\n", list[i].id, list[i].lastName, list[i].name, list[i].salary, list[i].sector);
+			if(flag == 0)
+			{
+				printf("%s %25s %25s %25s %25s\n",id,apellido,nombre,salario,sector);
+				flag = 1;
+			}
+			printf("\n %d %25s %25s %25.2f %25d\n", list[i].id, list[i].lastName, list[i].name, list[i].salary, list[i].sector);
 		}
 	}
 
