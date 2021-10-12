@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "Employees.h"
+#include "ArrayEmployees.h"
 #include "Utn.h"
 
 #define CANTIDAD_EMPLEADOS 3
@@ -63,7 +63,6 @@ int main(void) {
 								{
 									printf("No se cargo el empleado devido a errores en la carga\n");
 								}
-
 
 								printf("Desea dar de alta a otro empleado?: [S/N]");
 								scanf("%c", &respuesta);

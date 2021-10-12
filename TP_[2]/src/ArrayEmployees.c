@@ -5,24 +5,80 @@
 #include <ctype.h>
 
 
-#include "Employees.h"
+#include "ArrayEmployees.h"
 #include "Utn.h"
 
 #define CANTIDAD_EMPLEADOS 1
 #define CANTIDAD_CARACTERES 51
 
-
+/// @brief Carga el nombre de un empleado
+/// @param name char nombre del empleado
+/// @param len tamaño del array de char empleado
+/// @return retorno(0) if error, (1) if ok
 static int cargarNombre(char name[], int len);
+
+/// @brief Carga el apellido de un empleado
+/// @param lastName Char apellido del empleado
+/// @param len tam del array del char empleado
+/// @return retorno(0) if error, (1) if ok
 static int cargarApellido(char lastName[], int len);
 
+/// @brief modifica el nombre de un empleado
+/// @param list array de empleados
+/// @param len Tam del array de empleados
+/// @param id identificador del empleado
+/// @return retorno(0) if error, (1) if ok
 static int modificarNombreEmpleado(Employee* list, int len, int id);
+
+/// @brief modifica el apellido de un empleado
+/// @param list array de empleados
+/// @param len tam del array de empleados
+/// @param id identificador del empleado
+/// @return retorno(0) if error, (1) if ok
 static int modificarApellidoEmpleado(Employee* list, int len, int id);
+
+/// @brief modifica el sector del empleado
+/// @param list array de empleados
+/// @param len tam array de empleados
+/// @param id identificador del empleado
+/// @return retorno(0) if error, (1) if ok
 static int modificarSectorEmpleado(Employee* list, int len, int id);
+
+/// @brief modifica el salario del empleado
+/// @param list array de empleados
+/// @param len tam array de empleados
+/// @param id identificador del empleado
+/// @return retorno(0) if error, (1) if ok
 static int modificarSalarioEmpleado(Employee* list, int len, int id);
 
+/// @brief cuenta la cantidad de empleados que estan dados de alta
+/// @param list array de empleados
+/// @param len tam array de empleados
+/// @param contadorEmpleados, puntero contador de empleados que estan de alta
+/// @return retorno(0) if error, (1) if ok
 static int contarEmpleados(Employee* list, int len, int* contadorEmpleados);
+
+/// @brief acumula el total del salario de los empleados que estan dados de alta
+/// @param list array de empleados
+/// @param len tam array de empleados
+/// @param acumuladorSueldos, puntero a acumulador de sueldos
+/// @return retorno(0) if error, (1) if ok
 static int acumularSueldos(Employee* list, int len, float* acumuladorSueldos);
+
+/// @brief Calcula el promedio de los sueldos de los empleados dados de alta
+/// @param list	array de empleados
+/// @param len tam de array
+/// @param contadorEmpleados cantidad de empleados que estan dados de alta
+/// @param acumuladorSueldos el total de los salarios de los empleados que estan dados de alta
+/// @param promedio puntero a promedio de sueldos
 static void promedioSueldosEmpleados(Employee* list, int len, int contadorEmpleados, float acumuladorSueldos, float* promedio);
+
+/// @brief contador de empleados que superan el salario promedio
+/// @param list array de empleados
+/// @param len tam de array de empleados
+/// @param contadorSueldosMayoresPromedio puntero a el contador de sueldos mayores al promedio
+/// @param promedioSueldos promedio de sueldos de los empleados dados de alta
+/// @return retorno(0) if error, (1) if ok
 static int contarSueldosMayoresPromedio(Employee* list, int len, int* contadorSueldosMayoresPromedio, float promedioSueldos);
 
 
@@ -332,7 +388,6 @@ static int modificarNombreEmpleado(Employee* list, int len, int id)
 	int retorno = 0;
 	char nombreAux [CANTIDAD_CARACTERES];
 
-	//printfEmployees(list, len);
 	mostrarUnEmpleadoPorId(list, len, id);
 	for(int i = 0; i<len; i++)
 	{
@@ -360,7 +415,6 @@ static int modificarApellidoEmpleado(Employee* list, int len, int id)
 	int retorno = 0;
 	char apellidoAux[50];
 
-	//printfEmployees(list, len);
 	mostrarUnEmpleadoPorId(list, len, id);
 
 	for(int i = 0; i<len; i++)
@@ -387,7 +441,6 @@ static int modificarApellidoEmpleado(Employee* list, int len, int id)
 static int modificarSectorEmpleado(Employee* list, int len, int id)
 {
 	int retorno = 0;
-	//printfEmployees(list, len);
 	mostrarUnEmpleadoPorId(list, len, id);
 	for(int i = 0; i<len; i++)
 	{
@@ -409,7 +462,6 @@ static int modificarSectorEmpleado(Employee* list, int len, int id)
 static int modificarSalarioEmpleado(Employee* list, int len, int id)
 {
 	int retorno = 0;
-	//printfEmployees(list, len);
 	mostrarUnEmpleadoPorId(list, len, id);
 
 	for(int i = 0; i<len; i++)
@@ -433,80 +485,15 @@ static int modificarSalarioEmpleado(Employee* list, int len, int id)
 int sortEmployees(Employee* list, int len, int order)
 {
 	int retorno=0;
-	Employee auxiliarEmpleado;
-	int i;
-	int flagOrdenado = 1;
 
 	if(order == 1)
 	{
-		while(flagOrdenado == 1)
-		{
-			flagOrdenado = 0;
-			for(i=1; i<len; i++)
-			{
-				if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) < 0)
-				{
-					auxiliarEmpleado = list[i];
-					list[i] = list[i-1];
-					list[i-1] = auxiliarEmpleado;
-
-					flagOrdenado = 1;
-					retorno = 1;
-				}
-				else
-				{
-					if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) == 0)
-					{
-						if(list[i].sector < list[i-1].sector)
-						{
-							auxiliarEmpleado = list[i];
-							list[i] = list[i-1];
-							list[i-1] = auxiliarEmpleado;
-
-							flagOrdenado = 1;
-							retorno = 1;
-						}
-					}
-				}
-			}
-		}
+		ordenarApellidoAscendente(list, len);
 
 	}
 	else
 	{
-		while(flagOrdenado == 1)
-			{
-				flagOrdenado = 0;
-				for(i=1; i<len; i++)
-				{
-					if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) > 0)
-					{
-						auxiliarEmpleado = list[i];
-						list[i] = list[i-1];
-						list[i-1] = auxiliarEmpleado;
-
-						flagOrdenado = 1;
-						retorno = 1;
-					}
-					else
-					{
-						if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) == 0)
-						{
-							if(list[i].sector > list[i-1].sector)
-							{
-								auxiliarEmpleado = list[i];
-								list[i] = list[i-1];
-								list[i-1] = auxiliarEmpleado;
-
-								flagOrdenado = 1;
-								retorno = 1;
-							}
-						}
-
-					}
-				}
-			}
-
+		ordenarApellidoDescendente(list, len);
 	}
 
 	return retorno;
@@ -631,4 +618,147 @@ int mostrarUnEmpleadoPorId(Employee* list, int lenght, int id)
 	}
 
 	return retorno;
+}
+
+int ordenarApellidoAscendente(Employee* list, int len)
+{
+	int retorno = 0;
+	int flagOrdenado = 1;
+	Employee auxiliarEmpleado;
+	int i;
+
+	if(list != NULL && len > 0)
+	{
+
+		while(flagOrdenado == 1)
+		{
+			flagOrdenado = 0;
+			for(i=1; i<len; i++)
+			{
+				if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) < 0)
+				{
+					auxiliarEmpleado = list[i];
+					list[i] = list[i-1];
+					list[i-1] = auxiliarEmpleado;
+
+					flagOrdenado = 1;
+					retorno = 1;
+				}
+				else
+				{
+					ordenarSectorAscendente(list, len);
+				}
+			}
+		}
+	}
+
+	return retorno;
+}
+
+int ordenarApellidoDescendente(Employee* list, int len)
+{
+	int retorno = 0;
+	int flagOrdenado = 1;
+	Employee auxiliarEmpleado;
+	int i;
+
+	if(list != NULL && len > 0)
+	{
+
+		while(flagOrdenado == 1)
+		{
+			flagOrdenado = 0;
+			for(i=1; i<len; i++)
+			{
+				if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) > 0)
+				{
+					auxiliarEmpleado = list[i];
+					list[i] = list[i-1];
+					list[i-1] = auxiliarEmpleado;
+
+					flagOrdenado = 1;
+					retorno = 1;
+				}
+				else
+				{
+					ordenarSectorDescendente(list, len);
+
+					}
+				}
+			}
+	}
+
+
+		return retorno;
+}
+
+int ordenarSectorAscendente(Employee* list, int len)
+{
+	int retorno = 0;
+	int flagOrdenado = 1;
+	Employee auxiliarEmpleado;
+	int i;
+
+	if(list != NULL && len > 0)
+	{
+		while(flagOrdenado == 1)
+			{
+				flagOrdenado = 0;
+				for(i=1; i<len; i++)
+				{
+					if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) == 0)
+					{
+						if(list[i].sector < list[i-1].sector)
+						{
+							auxiliarEmpleado = list[i];
+							list[i] = list[i-1];
+							list[i-1] = auxiliarEmpleado;
+
+							flagOrdenado = 1;
+							retorno = 1;
+						}
+					}
+
+
+				}
+			}
+
+	}
+
+	return retorno;
+}
+
+int ordenarSectorDescendente(Employee* list, int len)
+{
+	int retorno = 0;
+	int flagOrdenado = 1;
+	Employee auxiliarEmpleado;
+	int i;
+
+	if(list != NULL && len > 0)
+	{
+		while(flagOrdenado == 1)
+		{
+			flagOrdenado = 0;
+			for(i=1; i<len; i++)
+			{
+					if(strncmp(list[i].lastName,list[i-1].lastName,CANTIDAD_CARACTERES) == 0)
+					{
+						if(list[i].sector > list[i-1].sector)
+							{
+								auxiliarEmpleado = list[i];
+								list[i] = list[i-1];
+								list[i-1] = auxiliarEmpleado;
+
+								flagOrdenado = 1;
+								retorno = 1;
+							}
+					}
+
+			}
+
+		}
+	}
+
+			return retorno;
 }

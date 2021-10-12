@@ -6,11 +6,21 @@
 #include <limits.h>
 
 #define TCADENA 50
+
+/// @brief Verifica si la cadena ingresada es numerica
+///
+/// @param cadena Cadena de caracteres a ser analizada
+/// @return retorna 1(verdadero) si la cadena es numerica, y 0  (error) si no
 static int EsNumerica(char* cadena);
-int GetInt(int* pResultado);
-int Tolower(char nombreAPasar[], int tamArray);
-int PrimerLetraToUpper(char nombreAPasar[], int tamArray);
+
+/// @brief
+/// @param pResultado
+/// @return retorno(0) if error, (1) if ok
 static int GetFloat(float* pResultado);
+
+/// @brief verifica que la cadena ingresada sea un numero flotante
+/// @param cadena array de caracteres
+/// @return retorno(0) if error, (1) if ok
 static int EsFlotante(char* cadena);
 
 int PedirCadenaChars(char cadena[], int tam, char mensaje[], char mensajeError[], int reintentos)
@@ -88,7 +98,7 @@ int EsChar(char* cadena)
 
 int MyGets(char* cadena, int longitud)
 {
-	int retorno = -1;
+	int retorno = 0;
 	if(cadena != NULL && longitud > 0 && fgets(cadena,longitud,stdin)==cadena)
 	{
 		__fpurge(stdin);
@@ -96,7 +106,7 @@ int MyGets(char* cadena, int longitud)
 		{
 			cadena[strlen(cadena)-1] = '\0';
 		}
-		retorno = 0;
+		retorno = 1;
 	}
 	return retorno;
 }
@@ -139,7 +149,7 @@ int GetInt(int* pResultado)
 	int retorno = -1;
 	char buffer[64];
 
-	if(MyGets(buffer, sizeof(buffer))==0 && EsNumerica(buffer))
+	if(MyGets(buffer, sizeof(buffer))==1 && EsNumerica(buffer))
 	{
 		*pResultado = atoi(buffer);
 		retorno = 0;
@@ -278,7 +288,7 @@ static int GetFloat(float* pResultado)
 	int retorno = -1;
 	char buffer[64];
 
-	if(MyGets(buffer, sizeof(buffer))==0 && EsFlotante(buffer))
+	if(MyGets(buffer, sizeof(buffer))==1 && EsFlotante(buffer))
 	{
 		*pResultado = atof(buffer);
 		retorno = 0;
@@ -287,38 +297,4 @@ static int GetFloat(float* pResultado)
 	return retorno;
 }
 
-int Utn_getCaracter(char* pResultado, char* mensaje, char* mensajeError, char minimo, char maximo, int reintentos)
-{
-	int retorno = -1;
-	char bufferChar;
-
-	if(pResultado!=NULL && mensaje!=NULL && mensajeError!=NULL && minimo<=maximo &&reintentos >= 0)
-	{
-		do
-		{
-			printf("%s",mensaje);
-
-			if(MyGets(&bufferChar, sizeof(&bufferChar))==0 && EsChar(&bufferChar)==1 && bufferChar <= maximo && bufferChar >= minimo)
-			{
-				*pResultado = bufferChar;
-				retorno = 0;
-				break;
-			}
-			else
-			{
-				printf("%s", mensajeError);
-				reintentos--;
-			}
-
-		}while(reintentos >= 0);
-	}
-
-	if(reintentos < 0)
-	{
-		printf("\nTe quedaste sin reintentos.\n");
-	}
-
-
-	return retorno;
-}
 
