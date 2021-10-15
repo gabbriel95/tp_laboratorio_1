@@ -1,3 +1,7 @@
+/*
+ * Alumno : Mendez Juan Gabriel
+ * Division: 1F
+ * */
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <ctype.h>
