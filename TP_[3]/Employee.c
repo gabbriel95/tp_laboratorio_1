@@ -139,10 +139,14 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
 		auxEmpleado = employee_new();
 
-		employee_setId(auxEmpleado, id);
-		employee_setNombre(auxEmpleado, nombreStr);
-		employee_setSueldo(auxEmpleado, sueldo);
-		employee_setHorasTrabajadas(auxEmpleado, horasTrabajadas);
+		if(auxEmpleado != NULL)
+		{
+			employee_setId(auxEmpleado, id);
+			employee_setNombre(auxEmpleado, nombreStr);
+			employee_setSueldo(auxEmpleado, sueldo);
+			employee_setHorasTrabajadas(auxEmpleado, horasTrabajadas);
+		}
+
 
 	}
 
