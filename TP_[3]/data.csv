@@ -1,4 +1,4 @@
-0,nombre,0,0
+id,nombre,horasTrabajadas,sueldo
 1,Lou,120,10000
 2,Ulrike,180,25000
 3,Brade,325,20000
@@ -999,6 +999,3 @@
 998,Jaye,75,25000
 999,Tamarra,60,15000
 1000,Saleem,60,20000
-1001,Juan,30,2000
-1002,pepe,32,200
-1003,jose,23,123
