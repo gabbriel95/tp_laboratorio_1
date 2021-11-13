@@ -7,6 +7,8 @@
 #include "Utn.h"
 
 /****************************************************
+ * Alumno: Mendez Juan Gabriel
+ * Division:1F
     Menu:
 ok     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
 ok     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
@@ -49,7 +51,7 @@ int main()
 	            break;
 
 	        case 2:
-	        	controller_loadFromBinary("data.bin", listaEmpleados);//Probar si funciona cuando tenga el punto 9
+	        	controller_loadFromBinary("data.bin", listaEmpleados);
 	            break;
 
 	        case 3:

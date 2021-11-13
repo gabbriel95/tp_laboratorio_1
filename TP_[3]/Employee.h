@@ -28,13 +28,13 @@ int employee_setSueldo(Employee* this,int sueldo);
 int employee_getSueldo(Employee* this,int* sueldo);
 
 //Crear una funcion que compare a dos empleados x nombre
-int employee_CompareByName(void*, void*);
+int employee_CompareByName(void* pEmpleadoA, void* pEmpleadoB);
 int employee_CompareById(void* pEmpleadoA, void* pEmpleadoB);
 
 
-void employee_SolicitarNombre(char* name, Employee* empleado);
-void employee_SolicitarSalario(int salario, Employee* empleado);
-void employee_SolicitarHorasTrabajadas(int horas, Employee* empleado);
+int employee_SolicitarNombre(char* name, Employee* empleado);
+int employee_SolicitarSalario(int salario, Employee* empleado);
+int employee_SolicitarHorasTrabajadas(int horas, Employee* empleado);
 
 
 

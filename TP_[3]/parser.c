@@ -22,13 +22,15 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
 	if(pFile != NULL && pArrayListEmployee != NULL)
 	{
-		retorno = 1;
+		//HASTA ACA FUNCIONA MEDIANAMENTE BIEN
 		fscanf(pFile, "%[^,], %[^,], %[^,], %[^\n]\n", id, nombre, horasTrabajadas, salario);
+		retorno = 1;
 		while(!feof(pFile))
 		{
+
 			respuesta = fscanf(pFile, "%[^,], %[^,], %[^,], %[^\n]\n", id, nombre, horasTrabajadas, salario);
 
-			if(respuesta == 4)
+			if(respuesta == 4 && auxEmpleado != NULL)
 			{
 				auxEmpleado = employee_newParametros(id, nombre, horasTrabajadas, salario);
 				if(auxEmpleado != NULL)

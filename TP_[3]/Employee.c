@@ -26,15 +26,15 @@ Employee* employee_new()
 
 int employee_setId(Employee* this, int id)
 {
-	int setea = -1;
+	int retorno = -1;
 
 	if(this != NULL)
 	{
 		this->id = id;
-		setea = 0;
+		retorno = 1;
 	}
 
-	return setea;
+	return retorno;
 }
 
 int employee_getId(Employee* this)
@@ -155,14 +155,14 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
 
 
-int employee_CompareByName(void* a, void* b)
+int employee_CompareByName(void* pEmpleadoA, void* pEmpleadoB)
 {
 	int retorno = 0;
 	Employee* e1;
 	Employee* e2;
 
-	e1 =(Employee*) a;
-	e2 =(Employee*) b;
+	e1 =(Employee*) pEmpleadoA;
+	e2 =(Employee*) pEmpleadoB;
 
 	if(strcmp(e1->nombre, e2->nombre) >0)
 	{
@@ -183,14 +183,19 @@ int employee_CompareById(void* pEmpleadoA, void* pEmpleadoB)
 {
 	int retorno = 0;
 
+	Employee* e1;
+	Employee* e2;
 
-	if(((Employee*)pEmpleadoA)->id > ((Employee*)pEmpleadoB)->id)
+	e1 =(Employee*) pEmpleadoA;
+	e2 =(Employee*) pEmpleadoB;
+
+	if(e1->id > e2->id)
 	{
 		retorno = 1;
 	}
 	else
 	{
-		if(((Employee*)pEmpleadoA)->id < ((Employee*)pEmpleadoB)->id)
+		if(e1->id < e2->id)
 		{
 			retorno = -1;
 		}
@@ -199,28 +204,52 @@ int employee_CompareById(void* pEmpleadoA, void* pEmpleadoB)
 	return retorno;
 }
 
-void employee_SolicitarNombre(char* name, Employee* empleado)
+int employee_SolicitarNombre(char* name, Employee* empleado)
 {
-	if(PedirCadenaChars(name, 51, "\nIngrese el nombre: ", "\nError\n", 3) == 1)
+	int retorno = -1;
+
+	if(name != NULL && empleado != NULL)
 	{
-		employee_setNombre(empleado, name);
+		if(PedirCadenaChars(name, 51, "\nIngrese el nombre: ", "\nError\n", 3) == 1)
+		{
+			employee_setNombre(empleado, name);
+			retorno = 1;
+		}
 	}
+
+	return retorno;
 }
 
-void employee_SolicitarSalario(int salario, Employee* empleado)
+int employee_SolicitarSalario(int salario, Employee* empleado)
 {
-	if(Utn_GetNumero(&salario, "\nIngrese el sueldo: ", "Error",  0, 200000, 3) == 1)
+	int retorno = -1;
+
+	if(empleado != NULL)
 	{
-		employee_setSueldo(empleado, salario);
+		if(Utn_GetNumero(&salario, "\nIngrese el sueldo: ", "Error",  0, 200000, 3) == 1)
+		{
+			employee_setSueldo(empleado, salario);
+			retorno = 1;
+		}
 	}
+
+	return retorno;
 }
 
-void employee_SolicitarHorasTrabajadas(int horas, Employee* empleado)
+int employee_SolicitarHorasTrabajadas(int horas, Employee* empleado)
 {
-	if(Utn_GetNumero(&horas, "\nIngrese horas trabajadas:", "Error",  12, 72, 3) == 1)
+	int retorno = -1;
+
+	if(empleado != NULL)
 	{
-		employee_setHorasTrabajadas(empleado, horas);
+		if(Utn_GetNumero(&horas, "\nIngrese horas trabajadas:", "Error",  12, 72, 3) == 1)
+		{
+			employee_setHorasTrabajadas(empleado, horas);
+			retorno = 1;
+		}
 	}
+
+	return retorno;
 }
 
 
