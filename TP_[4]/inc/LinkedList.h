@@ -26,7 +26,7 @@ struct Node
 
 struct LinkedList
 {
-    Node* pFirstNode;
+    Node* pFirstNode;				//puntero al primer nodo
     int size;                       //cada vez que agrego o elimino un elemento size++/--
 }typedef LinkedList;
 #endif
